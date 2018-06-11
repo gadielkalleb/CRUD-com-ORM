@@ -12,12 +12,14 @@ app.use(express.static('public'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.use('/', (req, res, next) => {
-  // console.log(req.rawHeaders)
-  console.log(req.url)
-  next()
-})
-app.use('/', (req, res) => res.render('index', { title: 'pagina inicial'}))
+// app.use('/', (req, res, next) => {
+//   console.log(req.rawHeaders)
+//   console.log(req.url)
+//   next()
+// })
+app.get('/', (req, res) => res.render('index', { title: 'pagina inicial'}))
 app.use('/pessoas', pessoas)
 
-app.listen(port, () => console.log('escutando app na porta '+port))
+model.sequelize.sync().then(() => {
+  app.listen(port, () => console.log('escutando app na porta '+port))
+})
