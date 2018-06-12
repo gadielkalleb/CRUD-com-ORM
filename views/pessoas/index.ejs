@@ -1,0 +1,28 @@
+<% include ../partials/head.ejs %>
+ 
+  <h1><%= h1titulo %></h1>
+  <p><a href="/">Voltar para a lista de pessoas</a></p>
+  <p><a href="/pessoas/create">Adicionar uma pessoa</a></p>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Nome</th>
+      <th>nascimento</th>
+      <th>cargo</th>	
+      <th>Ações</th>
+    </tr>
+      <% pessoas.map( pessoa => { %> 
+    <tr>
+      <td><%= pessoa.nome %></td>
+      <td><%= pessoa.nascimento %></td>
+      <td><%= pessoa.cargo %></td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a type="button" class="btn btn-secondary" href="/pessoas/update/<%= pessoa.id %>">Editar</a>
+          <a type="button" class="btn btn-secondary" href="/pessoas/delete/<%= pessoa.id %>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+        </div>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+
+<% include ../partials/footer.ejs %>

@@ -23,6 +23,6 @@ app.get('/', (req, res) => res.render('index', { title: 'pagina inicial'}))
 app.use('/pessoas', pessoas)
 
 // Sincroniza com banco e depois starta a aplicação
-model.sequelize.sync().then(() => {
+model.sequelize.sync(/*{ force: true}*/).then(() => {
   app.listen(port, () => console.log('escutando app na porta '+port))
 })

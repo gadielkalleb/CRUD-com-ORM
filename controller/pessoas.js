@@ -2,9 +2,9 @@ const model = require('../model/index')
 
 exports.index = async ({ Pessoa }, req, res) => {
   const pessoas = await Pessoa.findAll()
-  res.render('home',{ 
+  res.render('pessoas/index',{ 
     title: 'Bem vindo ao cadastro de projetos',
-    mensagem: 'Olá mundo',
+    h1titulo: 'Lista de Pessoas',
     pessoas: pessoas
   })
 } 
@@ -12,5 +12,6 @@ exports.index = async ({ Pessoa }, req, res) => {
 exports.createForm = (req, res) => res.render('pessoas/create',{ title: 'Pagina de cadastro'})
 
 exports.createProcess = async ({ Pessoa }, req, res) => {
-  res.send('create')
+  await Pessoa.create(req.body)
+  res.redirect('/pessoas')
 }
