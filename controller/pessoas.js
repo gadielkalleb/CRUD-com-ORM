@@ -8,3 +8,9 @@ exports.index = async ({ Pessoa }, req, res) => {
     pessoas: pessoas
   })
 } 
+
+exports.createForm = (req, res) => res.render('pessoas/create',{ title: 'Pagina de cadastro'})
+
+exports.createProcess = async ({ Pessoa }, req, res) => {
+  res.send('create')
+}

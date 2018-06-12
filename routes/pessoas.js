@@ -4,5 +4,7 @@ const pessoasController = require('../controller/pessoas')
 const model = require('../model/index')
 
 router.get('/', pessoasController.index.bind(null, model.models))
+router.get('/createForm', pessoasController.createForm)
+router.post('/createProcess', pessoasController.createProcess.bind(null, model.models))
 
 module.exports = router
