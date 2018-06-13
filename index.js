@@ -22,7 +22,8 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('index', { title: 'pagina inicial'}))
 app.use('/pessoas', pessoas)
 
-// Sincroniza com banco e depois starta a aplicação
-model.sequelize.sync(/*{ force: true}*/).then(() => {
+// Sincroniza com banco e depois starta a aplicação 
+// metodo force dentro de sync() dropa meu banco de dados e cria um novamente cuidado com isso.
+model.sequelize.sync({ /*force: true*/ }).then(() => {
   app.listen(port, () => console.log('escutando app na porta '+port))
 })

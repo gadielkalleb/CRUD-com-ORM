@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('cadastro_orm', 'root', '', {
+const sequelize = new Sequelize('cadastro_orm', 'root', 'root', {
   dialect: 'mysql',
   host: '127.0.0.1'
 })
